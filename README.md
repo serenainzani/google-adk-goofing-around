@@ -1,8 +1,8 @@
 # Goofing around with Google ADK
 
-Following the getting started guide from Google: https://adk.dev/get-started/python/
+Learning about ADK using Google's https://adk.dev/ docs
 
-## Setup
+## Quickstart
 
 ```zsh
 uv venv
@@ -11,8 +11,22 @@ uv sync
 adk web --port 8000
 ```
 
-## Options for running the agent
+## Agents
+| Agent    | purpose | tutorial link |
+| -------- | ------- | ------- |
+| my_agent  | returns the time for a given city. Set to 10:30AM for all cities    | https://adk.dev/get-started/python/  |
+| multi_tool_agent  | returns time and weather for a given city. Set to only work for Edinburgh (and London for time only) | https://adk.dev/tutorials/multi-tool-agent/  |
 
+
+## Options for running the agents
 
 `adk web --port 8000` - run agent with web UI interface (dev/debugging only, not prod)
-`adk run my_agent` - run agent in terminal
+
+`adk run <agent name>` - run a specific agent in terminal
+
+
+## Notes of what I learnt
+
+- uv is a combined python, virtual env and deps manager all in one. It's quicker than pip and written in Rust.
+- `adk create <agent name>` - create new agent.
+- each folder -> different agent. You can switch between then in the header dropdown on the web interface.
