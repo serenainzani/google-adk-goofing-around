@@ -1,0 +1,6 @@
+[project]
+name = "google-adk-goofing-around"
+version = "0.1.0"
+dependencies = [
+    "google-adk>=2.4.0",
+]
