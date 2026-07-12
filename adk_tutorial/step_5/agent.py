@@ -105,6 +105,9 @@ def block_keyword_guardrail(
     """
     Inspects the latest user message for 'BLOCK'. If found, blocks the LLM call
     and returns a predefined LlmResponse. Otherwise, returns None to proceed.
+
+    CallbackContext - allows access to agent info, session state, etc
+    LlmRequest - allows access to full payload for the LLM
     """
     agent_name = callback_context.agent_name # Get the name of the agent whose model call is being intercepted
     print(f"--- Callback: block_keyword_guardrail running for agent: {agent_name} ---")

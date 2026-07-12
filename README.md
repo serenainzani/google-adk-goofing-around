@@ -46,3 +46,6 @@ adk web --port 8000
 - agent names (including directory paths to agents) can't have dashes or spaces. Example error: `'adk-tutorial.step_1'. Agent names must be valid Python identifiers or paths separated by dots (letters, digits, underscores, and dots).
 - LiteLlm is only needed when you want to route through non-Gemini providers (Anthropic, OpenAI, etc.) via LiteLLM's unified API. No need if just using Gemini.
 - For LiteLlm, in the .env files the XXX_API_KEY vars are not referenced in the files. They are instead pre-expected names that LiteLLM uses to pair the model provider to the correct key e.g.  GOOGLE_API_KEY -> gemini/<model>. See the [example .env](<./adk_tutorial/.env example>) for reference
+- `before_model_callback` - a func that executes before the agent sends a request to the LLM
+    - can be used to block or modify a req
+    - Used for input validation, filtering, guardrails and dynamic prompt modification
