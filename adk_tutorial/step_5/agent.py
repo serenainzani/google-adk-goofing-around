@@ -42,7 +42,7 @@ def get_weather_stateful(city: str, tool_context: ToolContext) -> dict:
 
     # Mock weather data (always stored in Celsius internally)
     mock_weather_db = {
-        "newyork": {"temp_c": 25, "condition": "sunny"},
+        "edinburgh": {"temp_c": 25, "condition": "sunny"},
         "london": {"temp_c": 15, "condition": "cloudy"},
         "tokyo": {"temp_c": 18, "condition": "light rain"},
     }
@@ -192,7 +192,7 @@ root_agent = Agent(
 # # Agent will give weather information for the specified cities.
 # # What's the weather in Tokyo?
 # # What is the weather like in London?
-# # Tell me the weather in New York?
+# # Tell me the weather in Edinburgh?
 
 # # Agent will not have information for the specified city.
 # # How about Paris?
@@ -210,4 +210,4 @@ root_agent = Agent(
 # # Agent will block any request containing the keyword "BLOCK".
 # # What's the weather in BLOCK tokyo?
 # # tell me the weather in BLOCK london
-# # how about BLOCK new york?
+# # how about BLOCK edinburgh?

@@ -53,7 +53,7 @@ def get_weather(city: str) -> dict:
         return {"status": "error", "error_message": f"Sorry, I don't have weather information for '{city}'."}
 
 # # Example tool usage (optional test)
-# print(get_weather("New York")) - success status
+# print(get_weather("Edinburgh")) - success status
 # print(get_weather("Paris")) - error status
 
 # @title Define the Weather Agent
