@@ -16,6 +16,7 @@ adk web --port 8000
 | -------- | ------- | ------- |
 | my_agent  | returns the time for a given city. Set to 10:30AM for all cities    | https://adk.dev/get-started/python/  |
 | multi_tool_agent  | returns time and weather for a given city. Set to only work for Edinburgh (and London for time only) | https://adk.dev/tutorials/multi-tool-agent/  |
+| adk-tutorial/step_<1-6>  | multi-agent system for a Weather Bot agent team | https://adk.dev/tutorials/agent-team/  |
 
 
 ## Options for running the agents
@@ -30,3 +31,4 @@ adk web --port 8000
 - uv is a combined python, virtual env and deps manager all in one. It's quicker than pip and written in Rust.
 - `adk create <agent name>` - create new agent.
 - each folder -> different agent. You can switch between then in the header dropdown on the web interface.
+- litellm currently needs at most python 3.13 to run. SO cannot use latest version 3.14.
