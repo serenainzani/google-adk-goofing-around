@@ -15,8 +15,8 @@
 # @title Import necessary libraries
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm # For multimodel support
-from google.adk.sessions import InMemorySessionService
-from google.adk.runners import Runner
+# from google.adk.sessions import InMemorySessionService # only needed if running in a notebook
+# from google.adk.runners import Runner # only needed if running in a notebook
 from google.genai import types # For creating message Content/Parts
 
 
@@ -53,8 +53,8 @@ def get_weather(city: str) -> dict:
         return {"status": "error", "error_message": f"Sorry, I don't have weather information for '{city}'."}
 
 # # Example tool usage (optional test)
-# print(get_weather("New York"))
-# print(get_weather("Paris"))
+# print(get_weather("New York")) - success status
+# print(get_weather("Paris")) - error status
 
 # @title Define the Weather Agent
 
@@ -75,7 +75,7 @@ root_agent = Agent(
 # # Agent will give weather information for the specified cities.
 # # What's the weather in Tokyo?
 # # What is the weather like in London?
-# # Tell me the weather in New York?
+# # Tell me the weather in Edinburgh?
 
 # # Agent will not have information for the specified city.
 # # How about Paris?
