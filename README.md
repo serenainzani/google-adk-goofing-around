@@ -38,9 +38,11 @@ adk web --port 8000
     - What arguments it requires (city: str).
     - What information it returns.
 - Params for an Agent (orchestrator of user, LLM and tool interactions):
-    - **name**: Unique id for the agent. Be descriptive. 
+    - **name**: Unique id for the agent. Be descriptive. This appears in the graph view of the web UI (the name in the app selection dropdown is determined by the directory path name(s))
     - **model**: Which LLM to use e.g. "gemini-3.1-flash-lite".
     - **description**: What other agents use to determine what this agent does (key for delegation of tasks). It should be a short summary of the agent's purpose.
     - **instruction**: How the agent should behave. It's persona, goals and *how* & *when* to use it's tools. Use clear and specific prompts. More detailed on role and how to use the tools the better. Be explicit about error handling if needed. 
     - **tools**: List of functions that the agent is allowed to use.
 - agent names (including directory paths to agents) can't have dashes or spaces. Example error: `'adk-tutorial.step_1'. Agent names must be valid Python identifiers or paths separated by dots (letters, digits, underscores, and dots).
+- LiteLlm is only needed when you want to route through non-Gemini providers (Anthropic, OpenAI, etc.) via LiteLLM's unified API. No need if just using Gemini.
+- For LiteLlm, in the .env files the XXX_API_KEY vars are not referenced in the files. They are instead pre-expected names that LiteLLM uses to pair the model provider to the correct key e.g.  GOOGLE_API_KEY -> gemini/<model>. See the [example .env](<./adk_tutorial/.env example>) for reference

@@ -15,13 +15,11 @@
 # @title Import necessary libraries
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm # For multimodel support
-from google.adk.sessions import InMemorySessionService
-from google.adk.runners import Runner
 from google.genai import types # For creating message Content/Parts
 from typing import Optional
 
 # Use one of the model constants defined earlier
-MODEL_GEMINI_FLASH = "gemini-flash-latest"
+MODEL_GEMINI_FLASH = "gemini-3.1-flash-lite"
 
 
 # @title Define the get_weather Tool
@@ -29,7 +27,7 @@ def get_weather(city: str) -> dict:
     """Retrieves the current weather report for a specified city.
 
     Args:
-        city (str): The name of the city (e.g., "New York", "London", "Tokyo").
+        city (str): The name of the city (e.g., "Edinburgh", "London", "Tokyo").
 
     Returns:
         dict: A dictionary containing the weather information.
@@ -42,7 +40,7 @@ def get_weather(city: str) -> dict:
 
     # Mock weather data
     mock_weather_db = {
-        "newyork": {"status": "success", "report": "The weather in New York is sunny with a temperature of 25°C."},
+        "edinburgh": {"status": "success", "report": "The weather in Edinburgh is sunny with a temperature of 25°C."},
         "london": {"status": "success", "report": "It's cloudy in London with a temperature of 15°C."},
         "tokyo": {"status": "success", "report": "Tokyo is experiencing light rain and a temperature of 18°C."},
     }
@@ -139,7 +137,7 @@ root_agent = Agent(
 # # Agent will give weather information for the specified cities.
 # # What's the weather in Tokyo?
 # # What is the weather like in London?
-# # Tell me the weather in New York?
+# # Tell me the weather in Edinburgh?
 
 # # Agent will not have information for the specified city.
 # # How about Paris?

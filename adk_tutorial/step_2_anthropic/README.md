@@ -1,0 +1,1 @@
+Please note I am still using Gemini for this tutorial due to anthropic's lack of a proper free tier. 

@@ -15,19 +15,17 @@
 from google.adk.models.lite_llm import LiteLlm
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm # For multi-model support
-from google.adk.sessions import InMemorySessionService
-from google.adk.runners import Runner
 from google.genai import types # For creating message Content/Parts
 
-
-MODEL_CLAUDE_SONNET = "anthropic/claude-sonnet-4-20250514"
+# NOTE I am using gemini because anthropic does not have a real free tier
+MODEL_CLAUDE_SONNET = "gemini/gemini-flash-lite-latest"
 
 # @title Define the get_weather Tool
 def get_weather(city: str) -> dict:
     """Retrieves the current weather report for a specified city.
 
     Args:
-        city (str): The name of the city (e.g., "New York", "London", "Tokyo").
+        city (str): The name of the city (e.g., "Edinburgh", "London", "Tokyo").
 
     Returns:
         dict: A dictionary containing the weather information.
@@ -40,7 +38,7 @@ def get_weather(city: str) -> dict:
 
     # Mock weather data
     mock_weather_db = {
-        "newyork": {"status": "success", "report": "The weather in New York is sunny with a temperature of 25°C."},
+        "edinburgh": {"status": "success", "report": "The weather in Edinburgh is sunny with a temperature of 25°C."},
         "london": {"status": "success", "report": "It's cloudy in London with a temperature of 15°C."},
         "tokyo": {"status": "success", "report": "Tokyo is experiencing light rain and a temperature of 18°C."},
     }
@@ -53,7 +51,7 @@ def get_weather(city: str) -> dict:
 root_agent = Agent(
         name="weather_agent_claude",
         # Key change: Wrap the LiteLLM model identifier
-        model=LiteLlm(model=MODEL_CLAUDE_SONNET),
+        model=LiteLlm(model=MODEL_CLAUDE_SONNET), # NOTE don't need LiteLlm as using gemini, but leaving it here for learning
         description="Provides weather information (using Claude Sonnet).",
         instruction="You are a helpful weather assistant powered by Claude Sonnet. "
                     "Use the 'get_weather' tool for city weather requests. "
@@ -67,7 +65,7 @@ root_agent = Agent(
 # # Agent will give weather information for the specified cities.
 # # What's the weather in Tokyo?
 # # What is the weather like in London?
-# # Tell me the weather in New York?
+# # Tell me the weather in Edinburgh?
 
 # # Agent will not have information for the specified city.
 # # How about Paris?  
