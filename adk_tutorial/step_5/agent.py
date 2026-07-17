@@ -138,8 +138,10 @@ def block_keyword_guardrail(
             content=types.Content(
                 role="model", # Mimic a response from the agent's perspective
                 parts=[types.Part(text=f"I cannot process this request because it contains the blocked keyword '{keyword_to_block}'.")],
-            )
+            ),
             # Note: You could also set an error_message field here if needed
+            error_message="ERROR failed guardrail: guardrail_block_keyword_triggered",
+            error_code="403"
         )
     else:
         # Keyword not found, allow the request to proceed to the LLM
